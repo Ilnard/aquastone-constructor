@@ -65,8 +65,8 @@ export default function RequestDialog({ staff, project, onClose, onSent }) {
         <button type="button" className="primary-cta" onClick={onClose}><span>Готово</span></button>
       </div> : <>
         <p className="eyebrow">ЗАЯВКА НА РАССМОТРЕНИЕ</p>
-        <h2>{staff ? 'Отправить расчёт в заявки' : 'Оставьте контакты'}</h2>
-        <p className="request-lead">{staff ? <>Вы вошли как <b>{staff.name}</b>. Контакты клиента не нужны — заявка сохранится от вашего имени, клиента добавите при создании процесса.</> : 'Мы проверим расчёт и свяжемся с вами для уточнения деталей и замера.'}</p>
+        <h2>{LOCAL_CALC ? 'Расчёт в демо-версии' : staff ? 'Отправить расчёт в заявки' : 'Оставьте контакты'}</h2>
+        {!LOCAL_CALC && <p className="request-lead">{staff ? <>Вы вошли как <b>{staff.name}</b>. Контакты клиента не нужны — заявка сохранится от вашего имени, клиента добавите при создании процесса.</> : 'Мы проверим расчёт и свяжемся с вами для уточнения деталей и замера.'}</p>}
         <div className="request-summary">
           <div><span>Материал</span><b>{project.materialTitle}{project.thickness ? `, ${project.thickness} мм` : ''}</b></div>
           <div><span>Декор</span><b>{project.decor || 'не выбран'}</b></div>
